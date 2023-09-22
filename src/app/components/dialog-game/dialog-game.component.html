@@ -4,6 +4,6 @@
     <input  [(ngModel)]="data.name">
 </div>
 <div mat-dialog-actions>
-  <button (click)="onNoClick()">No Thanks</button>
-  <button  [mat-dialog-close]="data.name" cdkFocusInitial>Ok</button>
+  <button class="cancel" (click)="onNoClick()">Cancel</button>
+  <button  class="accept" [mat-dialog-close]="data.name" cdkFocusInitial>Ok</button>
 </div>

@@ -7,18 +7,18 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AppComponent } from './app.component';
 import { QuizContainerComponent } from './components/quiz-container/quiz-container.component';
 import { CategoriesComponent } from './components/categories/categories.component';
-import { ButtonComponent } from './components/button/button.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogGameComponent } from './components/dialog-game/dialog-game.component';
+import { QuestionComponent } from './components/question/question.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuizContainerComponent,
     CategoriesComponent,
-    ButtonComponent,
     DialogGameComponent,
+    QuestionComponent,
   ],
   imports: [
     BrowserModule,

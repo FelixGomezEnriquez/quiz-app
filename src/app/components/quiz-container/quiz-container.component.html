@@ -5,11 +5,12 @@
   <ng-container *ngIf="!play">
   <app-categories    (selectOnChange)="checkCategorySelected($event)" ></app-categories>
     <footer class="quiz-footer">
-      <app-button [text]="textButton" (click)="startGame()"></app-button>
+      <button class="btn-play" (click)="startGame()">Play</button>
     </footer>
 </ng-container >
 
 <ng-container *ngIf="play">
 
+  <app-question [question]="this.game!.currentQuestion">  </app-question>
 </ng-container>
 </section>
