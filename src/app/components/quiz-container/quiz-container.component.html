@@ -1,0 +1,15 @@
+<section class="quiz-container">
+  <header class="quiz-header">
+    <h1>Quiz App</h1>
+  </header>
+  <ng-container *ngIf="!play">
+  <app-categories    (selectOnChange)="checkCategorySelected($event)" ></app-categories>
+    <footer class="quiz-footer">
+      <app-button [text]="textButton" (click)="startGame()"></app-button>
+    </footer>
+</ng-container >
+
+<ng-container *ngIf="play">
+
+</ng-container>
+</section>

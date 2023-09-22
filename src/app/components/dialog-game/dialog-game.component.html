@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Hi </h1>
+<div mat-dialog-content>
+  <p>What's your name?</p>
+    <input  [(ngModel)]="data.name">
+</div>
+<div mat-dialog-actions>
+  <button (click)="onNoClick()">No Thanks</button>
+  <button  [mat-dialog-close]="data.name" cdkFocusInitial>Ok</button>
+</div>

@@ -1,0 +1,11 @@
+<article class="categories">
+  <select class="styled-select" [(ngModel)]="categorySelectedId" (ngModelChange)="selectChange($event)">
+    <option value="0">Choose a category</option>
+    <option *ngFor="let item of categories" [value]="item.id">
+      {{ item.name }}
+    </option>
+  </select>
+</article>
+
+<p>{{ categorySelectedId }}</p>
+
