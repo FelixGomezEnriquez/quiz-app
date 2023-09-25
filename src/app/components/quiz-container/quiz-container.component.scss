@@ -33,3 +33,38 @@
     box-shadow: inset 0 0 0 50px #02cad8;
   }
 }
+
+.slide-in-bck-center {
+  animation: slide-in-bck-center 1.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+@keyframes slide-in-bck-center {
+  0% {
+    transform: perspective(100px) translateZ(600px);
+    opacity: 0;
+  }
+  100% {
+    transform:  translateZ(0);
+    opacity: 1;
+  }
+}
+.tracking-in-expand {
+	animation: tracking-in-expand 2.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+.question{
+ width: 500px;
+    height: 400px;
+}

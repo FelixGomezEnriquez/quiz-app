@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogGameComponent } from './components/dialog-game/dialog-game.component';
 import { QuestionComponent } from './components/question/question.component';
+import { TimerComponent } from './components/timer/timer.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { QuestionComponent } from './components/question/question.component';
     CategoriesComponent,
     DialogGameComponent,
     QuestionComponent,
+    TimerComponent,
   ],
   imports: [
     BrowserModule,

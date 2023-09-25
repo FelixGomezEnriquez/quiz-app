@@ -10,4 +10,11 @@ export class QuestionComponent {
   @Input() question: any ;
 
 
+  ngOnInit(): void {
+    console.log(this.question);
+  }
+
+  ngOnChanges(): void {
+    console.log(this.question);
+  }
 }
