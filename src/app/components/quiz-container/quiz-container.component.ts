@@ -51,20 +51,23 @@ export class QuizContainerComponent {
 
     //Pedimos el nombre para el Ranking
     this.openDialog();
-    this.container!.nativeElement.classList.remove('slide-in-bck-center');
-    this.container!.nativeElement.classList.add('tracking-in-expand');
 
 
-    this.play = !this.play;
   }
 
   openDialog() {
     const dialogRef = this.dialog.open(DialogGameComponent, {
       data: { name: '' },
     });
-    const result = dialogRef.afterClosed().subscribe((result) => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
       this.game.name = result != '' ? result : 'NoName';
+      //Activamos el container de la partida una vez introducido el nombre
+      this.play = !this.play;
+      this.container!.nativeElement.classList.remove('slide-in-bck-center');
+      this.container!.nativeElement.classList.add(
+        'slide-in-elliptic-left-fwd'
+      );
     });
   }
 }
