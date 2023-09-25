@@ -1,3 +1,4 @@
 export interface Question {
-  results:[];
+  response_code: number;
+  results: [];
 }
