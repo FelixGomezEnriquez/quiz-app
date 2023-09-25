@@ -1,5 +1,5 @@
 import { TriviaService } from './../../services/trivia.service';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnChanges} from '@angular/core';
 import { Category } from 'src/app/interfaces/category';
 import { Game } from 'src/app/interfaces/game';
 import { MatDialog } from '@angular/material/dialog';
@@ -23,7 +23,9 @@ export class QuizContainerComponent {
     category: 'All',
   };
 
-  constructor(private triviaService: TriviaService, public dialog: MatDialog) {}
+  constructor(private triviaService: TriviaService, public dialog: MatDialog) {
+
+  }
 
   checkCategorySelected(category: Category): void {
     this.categorySelected = category;
@@ -51,8 +53,6 @@ export class QuizContainerComponent {
 
     //Pedimos el nombre para el Ranking
     this.openDialog();
-
-
   }
 
   openDialog() {
@@ -65,9 +65,7 @@ export class QuizContainerComponent {
       //Activamos el container de la partida una vez introducido el nombre
       this.play = !this.play;
       this.container!.nativeElement.classList.remove('slide-in-bck-center');
-      this.container!.nativeElement.classList.add(
-        'slide-in-elliptic-left-fwd'
-      );
+      this.container!.nativeElement.classList.add('slide-in-elliptic-left-fwd');
     });
   }
 }

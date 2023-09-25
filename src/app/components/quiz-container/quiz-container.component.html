@@ -12,6 +12,8 @@
   </ng-container>
 
   <ng-container *ngIf="play">
-    <app-question [question]="this.game.currentQuestion" class="question"> </app-question>
+    <app-question [game]="this.game" [categorySelected]="this.categorySelected" class="question"> </app-question>
+
+
   </ng-container>
 </section>
