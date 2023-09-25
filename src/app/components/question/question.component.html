@@ -1,25 +1,18 @@
 <section>
   <header class="question-header">
-    <h3>Nombre de la categoria</h3>
+    <h3>{{ this.question!.results[0].category }}</h3>
     <app-timer></app-timer>
   </header>
 
   <article>
-    <p>QUESTION</p>
+    <p [innerHTML]="this.question!.results[0].question"></p>
     <div class="answers">
-      <button class="answer">Respuesta1Respuesta1Respuesta1Respuesta1Respuesta1Respuesta1Respuesta1</button>
-      <button class="answer">Respuesta1</button>
-      <button class="answer">Respuesta1</button>
-      <button class="answer">Respuesta1</button>
+      <button *ngFor="let item of answers" class="answer" [innerHTML]="item">
+
+      </button>
     </div>
   </article>
 
   <button class="send-answer">COntestar</button>
-
 </section>
-
-<p>question works!
-  {{ question.code}}
-</p>
-
 
