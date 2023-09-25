@@ -14,7 +14,7 @@ export class TriviaService {
   }
   getQuestionEasy(category: Category, apiKey: string): Observable<any> {
     return this.http.get(
-      `https://opentdb.com/api.php?amount=1&category=${category.id}&difficulty=easy&token=${apiKey}`
+      `https://opentdb.com/api.php?amount=1&category=${category.id}&difficulty=easy&token=${apiKey}&type=multiple`
     );
   }
 
