@@ -16,7 +16,7 @@ export class TimerComponent {
   ngOnDestroy() {
     this.stopTimer();
   }
-  
+
   startTimer() {
     this.subscription$ = interval(1000)
       .pipe(takeWhile(() => this.secondsLeft > 0))
@@ -36,5 +36,8 @@ export class TimerComponent {
     if (this.subscription$) {
       this.subscription$.unsubscribe();
     }
+  }
+  resetTimer(): void {
+    this.secondsLeft = 40;
   }
 }
