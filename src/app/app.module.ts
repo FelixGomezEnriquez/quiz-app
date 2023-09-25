@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogGameComponent } from './components/dialog-game/dialog-game.component';
 import { QuestionComponent } from './components/question/question.component';
 import { TimerComponent } from './components/timer/timer.component';
+import { FailComponent } from './components/fail/fail.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { TimerComponent } from './components/timer/timer.component';
     DialogGameComponent,
     QuestionComponent,
     TimerComponent,
+    FailComponent,
   ],
   imports: [
     BrowserModule,
