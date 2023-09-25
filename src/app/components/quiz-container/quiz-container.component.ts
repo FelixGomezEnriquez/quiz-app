@@ -1,10 +1,9 @@
 import { TriviaService } from './../../services/trivia.service';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Category } from 'src/app/interfaces/category';
 import { Game } from 'src/app/interfaces/game';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogGameComponent } from '../dialog-game/dialog-game.component';
-import { Question } from 'src/app/interfaces/question';
 
 @Component({
   selector: 'app-quiz-container',
@@ -12,62 +11,60 @@ import { Question } from 'src/app/interfaces/question';
   styleUrls: ['./quiz-container.component.scss'],
 })
 export class QuizContainerComponent {
+  @ViewChild('container', { static: false }) container?: ElementRef;
+
   public textButton: string = 'Play!';
   public play: boolean = false;
   public categorySelected: Category = { id: 0, name: 'default' };
-  public game?: Game;
-
+  public game: Game = {
+    askedQuestions: 0,
+    correctAnswers: 0,
+    apiKey: '',
+    category: 'All',
+  };
 
   constructor(private triviaService: TriviaService, public dialog: MatDialog) {}
 
   checkCategorySelected(category: Category): void {
-    console.log(category);
     this.categorySelected = category;
   }
 
-  startGame(): void {
-    console.log(this.categorySelected);
+  async startGame(): Promise<void> {
+    let api: string = '';
+
+    //Generamos una api para el jugador
+    const token = await this.triviaService.generateApiToken().toPromise();
+    const apiKey = token.token;
 
     //Creamos una partida nueva
     this.game = {
       askedQuestions: 0,
       correctAnswers: 0,
-      apiKey: this.triviaService.generateApiToken(),
+      apiKey: apiKey,
       category: this.categorySelected.name,
     };
 
-    console.log(this.game.name);
+    //pido una pregunta pasando la categoria y el apikey
+    this.game.currentQuestion = await this.triviaService
+      .getQuestionEasy(this.categorySelected, this.game.apiKey)
+      .toPromise();
+
     //Pedimos el nombre para el Ranking
     this.openDialog();
+    this.container!.nativeElement.classList.remove('slide-in-bck-center');
+    this.container!.nativeElement.classList.add('tracking-in-expand');
 
-    //pido una pregunta pasando la categoria y el apikey
-    
-    this.triviaService.getQuestionEasy(this.categorySelected, this.game.apiKey)
-    .subscribe((question :Question)=>{
-      console.log(question.results);
 
-    });
-
-    //EFECTO MOVERSE A LA IZQUIERDA AL INICIAR EL JUEGO
-
-    // Guardar Question en el localstorage
     this.play = !this.play;
   }
 
-
-
-
-
-   openDialog(): void {
+  openDialog() {
     const dialogRef = this.dialog.open(DialogGameComponent, {
       data: { name: '' },
     });
     const result = dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
-      this.game!.name= (result!="")? result:"NoName" ;
+      this.game.name = result != '' ? result : 'NoName';
     });
   }
-
-
-
 }

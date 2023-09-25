@@ -12,22 +12,13 @@ export class TriviaService {
   getAllCategories(): Observable<Object> {
     return this.http.get('https://opentdb.com/api_category.php');
   }
-  getQuestionEasy(category: Category,apiKey:string): Observable<any> {
-    return this.http.get(`https://opentdb.com/api.php?amount=1&category=${category}&difficulty=easy`);
+  getQuestionEasy(category: Category, apiKey: string): Observable<any> {
+    return this.http.get(
+      `https://opentdb.com/api.php?amount=1&category=${category.id}&difficulty=easy&token=${apiKey}`
+    );
   }
 
-  generateApiToken(length: number = 32): string {
-    // Caracteres permitidos en el token (alfanuméricos y símbolos)
-    const characters =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+{}[]|';
-
-    let apiToken = '';
-    for (let i = 0; i < length; i++) {
-      const randomIndex = Math.floor(Math.random() * characters.length);
-      apiToken += characters.charAt(randomIndex);
-    }
-
-    return apiToken;
+  generateApiToken(): Observable<any> {
+    return this.http.get('https://opentdb.com/api_token.php?command=request');
   }
-
 }
