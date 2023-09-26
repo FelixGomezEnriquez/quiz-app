@@ -1,7 +1,7 @@
 <section>
   <header class="question-header">
     <h3>{{ this.game.currentQuestion!.results[0].category }}</h3>
-    <app-timer class="timer-component"></app-timer>
+    <app-timer class="timer-component" (noTime)="noTime($event)"></app-timer>
   </header>
 
   <article>
@@ -15,10 +15,6 @@
       </button>
     </div>
   </article>
-
-  <button class="send-answer" >COntestar</button>
-<p>preguntas respondidas:{{this.game.askedQuestions}}/</p>
-  <p>preguntas correctas:{{this.game.correctAnswers}}/</p>
 </section>
 
 

@@ -21,22 +21,22 @@ export class QuestionComponent {
 
   constructor(private router: Router, private triviaService: TriviaService) {}
   ngOnInit(): void {
-    this.answers=this.changeAnswers()
+    this.answers = this.changeAnswers();
   }
 
-  changeAnswers():string[]{
-     let answers: string[] = [];
+  changeAnswers(): string[] {
+    let answers: string[] = [];
 
-     answers.push(this.game.currentQuestion!.results[0].correct_answer);
-     answers = answers.concat(
-       this.game.currentQuestion!.results[0].incorrect_answers
-     );
-     //Desordenamos las respuestas
-     answers.sort(() => {
-       return Math.random() - 0.5;
-     });
+    answers.push(this.game.currentQuestion!.results[0].correct_answer);
+    answers = answers.concat(
+      this.game.currentQuestion!.results[0].incorrect_answers
+    );
+    //Desordenamos las respuestas
+    answers.sort(() => {
+      return Math.random() - 0.5;
+    });
 
-     return answers;
+    return answers;
   }
   ngAfterViewInit() {
     console.log();
@@ -47,7 +47,7 @@ export class QuestionComponent {
     let isCorrect =
       answer.innerHTML == this.game.currentQuestion!.results[0].correct_answer;
 
-      console.log(isCorrect);
+    console.log(isCorrect);
     if (isCorrect) {
       this.game.askedQuestions++;
       this.game.correctAnswers++;
@@ -59,8 +59,13 @@ export class QuestionComponent {
       confetti();
     } else {
       this.game.askedQuestions++;
-      this.router.navigate(['/fail',this.game] );
+      this.router.navigate(['/fail', this.game]);
     }
   }
-  ngOnChanges(): void {}
+  noTime(isTime: boolean): void {
+    if (isTime) {
+      alert('Your time is end!!');
+      this.router.navigate(['/fail', this.game]);
+    }
+  }
 }

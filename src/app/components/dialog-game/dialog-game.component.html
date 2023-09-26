@@ -1,9 +1,13 @@
 <h1 mat-dialog-title>Hi </h1>
 <div mat-dialog-content>
   <p>What's your name?</p>
-    <input  [(ngModel)]="data.name">
+    <input #input [(ngModel)]="data.name">
 </div>
 <div mat-dialog-actions>
   <button class="cancel" (click)="onNoClick()">Cancel</button>
-  <button  class="accept" [mat-dialog-close]="data.name" cdkFocusInitial>Ok</button>
+  <button  class="accept"
+  (click)="onAcceptClick(input)"
+  [mat-dialog-close]="data.name"
+  [disabled]="!data.name"
+  cdkFocusInitial>Ok</button>
 </div>

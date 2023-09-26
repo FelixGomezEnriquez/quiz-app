@@ -9,11 +9,11 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class DialogGameComponent {
   constructor(
     public dialogRef: MatDialogRef<DialogGameComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { name: string}
-  ) {
-    console.log(data);
+    @Inject(MAT_DIALOG_DATA) public data: { name: string }
+  ) {}
+  onAcceptClick(input: HTMLInputElement): void {
+    this.data.name = input.value;
   }
-
   onNoClick(): void {
     this.dialogRef.close();
   }

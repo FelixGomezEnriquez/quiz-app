@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
 import { takeWhile, map } from 'rxjs/operators';
 @Component({
@@ -7,6 +7,7 @@ import { takeWhile, map } from 'rxjs/operators';
   styleUrls: ['./timer.component.scss'],
 })
 export class TimerComponent {
+  @Output() noTime = new EventEmitter<boolean>();
   public secondsLeft = 40;
   private subscription$?: Subscription;
 
@@ -27,7 +28,7 @@ export class TimerComponent {
           this.cdr.detectChanges();
         },
         complete: () => {
-          alert('¡Se acabó el tiempo!');
+          this.noTime.emit(true);
         },
       });
   }

@@ -32,7 +32,6 @@ export class QuizContainerComponent {
   }
 
   async startGame(): Promise<void> {
-    let api: string = '';
 
     //Generamos una api para el jugador
     const token = await this.triviaService.generateApiToken().toPromise();
@@ -60,12 +59,18 @@ export class QuizContainerComponent {
       data: { name: '' },
     });
     dialogRef.afterClosed().subscribe((result) => {
+      if (!result) {
+        return;
+      }
+      console.log(result);
       console.log('The dialog was closed');
-      this.game.name = result != '' ? result : 'NoName';
+      this.game.name = result != '' ? result : 'No-Name';
       //Activamos el container de la partida una vez introducido el nombre
       this.play = !this.play;
       this.container!.nativeElement.classList.remove('slide-in-bck-center');
       this.container!.nativeElement.classList.add('slide-in-elliptic-left-fwd');
+      this.container!.nativeElement.classList.add('question');
+
     });
   }
 }
