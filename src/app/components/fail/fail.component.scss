@@ -1,0 +1,19 @@
+section{
+  background-color: aliceblue;
+  padding: 16px;
+  border-radius: 9px;
+  box-shadow: 1px 1px 10px white;
+
+}
+
+button{
+  padding: 12px 8px;
+  border: 0px;
+  border-radius:  16px;
+  background-color: rgba(199, 191, 191, 0.849);
+  cursor: pointer;
+  &:hover{
+    transition: background-color .6s linear;
+    background-color: rgba(95, 202, 161, 1);;
+  }
+}

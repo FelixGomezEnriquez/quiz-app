@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Game } from 'src/app/interfaces/game';
 
 @Component({
@@ -9,7 +9,7 @@ import { Game } from 'src/app/interfaces/game';
 })
 export class FailComponent {
   public game?: Game;
-  constructor(private actRoute: ActivatedRoute) {
+  constructor(private actRoute: ActivatedRoute,private route:Router) {
     this.actRoute.params.subscribe((params: Params) => {
       console.log(params);
       let {
@@ -30,5 +30,9 @@ export class FailComponent {
         name,
       };
     });
+  }
+
+  retry():void{
+    this.route.navigate(['']);
   }
 }

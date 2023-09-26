@@ -1,3 +1,10 @@
-<p>numero de preguntas {{this.game!.askedQuestions}}</p>
-<p>numero de aciertos {{this.game!.correctAnswers}}</p>
-<p>Nombre {{this.game!.name}}</p>
+<section>
+  <header>
+    <h3>You failed!</h3>
+  </header>
+  <h4>There is Your stats:</h4>
+  <p>Number of questions: {{this.game!.askedQuestions}}</p>
+  <p>Number of success: {{this.game!.correctAnswers}}</p>
+  <p>Name: {{this.game!.name}}</p>
+  <button (click)="retry()">Another try?</button>
+</section>
