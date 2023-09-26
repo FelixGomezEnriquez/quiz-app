@@ -1,7 +1,6 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -20,13 +19,15 @@ $quiz-app-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$quiz-app-theme: mat.define-light-theme((
-  color: (
-    primary: $quiz-app-primary,
-    accent: $quiz-app-accent,
-    warn: $quiz-app-warn,
+$quiz-app-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $quiz-app-primary,
+      accent: $quiz-app-accent,
+      warn: $quiz-app-warn,
+    ),
   )
-));
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -40,11 +41,11 @@ $quiz-app-theme: mat.define-light-theme((
   --option-bg: rgb(255, 255, 255);
   --select-bg: rgba(255, 255, 255, 0.2);
 }
-html, body {
+html,
+body {
   margin: 0px;
-  background-color: #353434;
+
+  background-image: linear-gradient(to right, #fffbd5, #b20a2c);
+
   font-family: "Lucida Console", Monaco, monospace;
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

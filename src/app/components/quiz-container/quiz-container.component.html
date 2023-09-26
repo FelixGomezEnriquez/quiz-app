@@ -1,19 +1,19 @@
 <section #container class="quiz-container slide-in-bck-center">
   <ng-container *ngIf="!play">
     <header class="quiz-header">
-      <h1 class="tracking-in-expand">Quiz App</h1>
+     
+      <img class="title" src="/assets/Trivia.gif" alt="App Title" />
     </header>
-    <app-categories
-      (selectOnChange)="checkCategorySelected($event)"
-    ></app-categories>
+    <app-categories (selectOnChange)="checkCategorySelected($event)" />
     <footer class="quiz-footer">
-      <button class="btn-play" (click)="startGame()">Play</button>
+      <button class="btn-play" (click)="startGame()">PLAY!</button>
     </footer>
   </ng-container>
 
   <ng-container *ngIf="play">
-    <app-question [game]="this.game" [categorySelected]="this.categorySelected" class="question"> </app-question>
-
-
+    <app-question
+      [game]="this.game"
+      [categorySelected]="this.categorySelected"
+    />
   </ng-container>
 </section>

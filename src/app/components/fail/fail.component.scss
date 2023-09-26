@@ -1,9 +1,15 @@
 section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
+  text-align: center;
   background-color: aliceblue;
   padding: 16px;
   border-radius: 9px;
   box-shadow: 1px 1px 10px white;
-
+  width: 600px;
+  height: 50vh;
 }
 
 button{
@@ -14,6 +20,6 @@ button{
   cursor: pointer;
   &:hover{
     transition: background-color .6s linear;
-    background-color: rgba(95, 202, 161, 1);;
+    background-color: rgb(202, 98, 95);;
   }
 }
