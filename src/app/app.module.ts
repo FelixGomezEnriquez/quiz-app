@@ -13,6 +13,8 @@ import { DialogGameComponent } from './components/dialog-game/dialog-game.compon
 import { QuestionComponent } from './components/question/question.component';
 import { TimerComponent } from './components/timer/timer.component';
 import { FailComponent } from './components/fail/fail.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { FormatSecondsPipe } from './pipes/format-seconds.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { FailComponent } from './components/fail/fail.component';
     QuestionComponent,
     TimerComponent,
     FailComponent,
+    FooterComponent,
+    FormatSecondsPipe,
   ],
   imports: [
     BrowserModule,
